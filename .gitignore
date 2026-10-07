@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+*.iml
+.vscode/
+build/
+.dart_tool/
+
+# Personal notes, not part of the submission
+notes/
