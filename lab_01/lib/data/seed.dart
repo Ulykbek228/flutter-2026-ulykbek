@@ -1,0 +1,145 @@
+import '../models/category.dart';
+import '../models/tournament.dart';
+
+DateTime _at(int days, int hour) {
+  final now = DateTime.now();
+  return DateTime(now.year, now.month, now.day + days, hour);
+}
+
+/// Twelve tournaments with dates relative to today.
+List<Tournament> seedTournaments() => [
+  // Mandatory: 60-character title.
+  Tournament(
+    id: 's1',
+    title: 'KBTU Autumn Cyber Cup 2026: Open Qualifier for All Faculties',
+    category: Category.premier,
+    startsAt: _at(3, 18),
+    slots: 40,
+    online: false,
+    place: 'KBTU, hall 254',
+    description: 'Best of three, map veto, top four go to the final.',
+    players: const ['Aibek', 'Dana', 'Timur'],
+  ),
+  // Mandatory: at its limit.
+  Tournament(
+    id: 's2',
+    title: 'Friday Wingman Night',
+    category: Category.wingman,
+    startsAt: _at(1, 20),
+    slots: 4,
+    online: false,
+    place: 'GG Arena, Abay 52',
+    description: 'Two-on-two on Vertigo and Nuke.',
+    favourite: true,
+    players: const ['Arman', 'Zhanel', 'Sanzhar', 'Inkar'],
+  ),
+  // Mandatory: in the past.
+  Tournament(
+    id: 's3',
+    title: 'Dust II Classic',
+    category: Category.premier,
+    startsAt: _at(-5, 19),
+    slots: 20,
+    online: false,
+    place: 'KBTU, hall 254',
+    description: 'The season opener.',
+    players: const ['Aibek', 'Madina', 'Yerlan'],
+  ),
+  // Mandatory: mode on (online, place is a link).
+  Tournament(
+    id: 's4',
+    title: 'Online Aim Duels',
+    category: Category.aimDuel,
+    startsAt: _at(2, 21),
+    slots: 32,
+    online: true,
+    place: 'https://discord.gg/kbtu-cs2',
+    description: 'One-on-one on aim_map, first to sixteen.',
+    players: const ['Dias', 'Kamila'],
+  ),
+  // Mandatory: no description.
+  Tournament(
+    id: 's5',
+    title: 'Retake Practice',
+    category: Category.retake,
+    startsAt: _at(4, 17),
+    slots: 10,
+    online: false,
+    place: 'Cyber club Kaspi',
+    players: const ['Alikhan'],
+  ),
+  Tournament(
+    id: 's6',
+    title: 'Deathmatch Warm-up',
+    category: Category.deathmatch,
+    startsAt: _at(0, 23),
+    slots: 16,
+    online: true,
+    place: 'https://faceit.com/lobby/dm-warmup',
+    players: const ['Timur', 'Nurlan', 'Ayan', 'Bekzat', 'Dana'],
+  ),
+  Tournament(
+    id: 's7',
+    title: 'Surf Sunday',
+    category: Category.surf,
+    startsAt: _at(6, 15),
+    slots: 12,
+    online: true,
+    place: 'https://discord.gg/surf-kz',
+    description: 'Relaxed surf and KZ maps, times go on the board.',
+  ),
+  Tournament(
+    id: 's8',
+    title: 'Faculty Premier League: Round 2',
+    category: Category.premier,
+    startsAt: _at(8, 18),
+    slots: 50,
+    online: false,
+    place: 'KBTU, main auditorium',
+    description: 'Teams of five, one per faculty.',
+    favourite: true,
+    players: const ['Aibek', 'Dana', 'Timur', 'Arman', 'Zhanel'],
+  ),
+  Tournament(
+    id: 's9',
+    title: 'Wingman Newcomers',
+    category: Category.wingman,
+    startsAt: _at(5, 19),
+    slots: 8,
+    online: false,
+    place: 'GG Arena, Abay 52',
+    description: 'For players under 1000 hours.',
+    players: const ['Inkar', 'Daniyar', 'Amina', 'Tomiris'],
+  ),
+  Tournament(
+    id: 's10',
+    title: 'AWP Only Duels',
+    category: Category.aimDuel,
+    startsAt: _at(-2, 20),
+    slots: 16,
+    online: true,
+    place: 'https://faceit.com/lobby/awp-only',
+    players: const ['Dias', 'Sanzhar'],
+  ),
+  Tournament(
+    id: 's11',
+    title: 'Mirage Retakes Marathon',
+    category: Category.retake,
+    startsAt: _at(10, 16),
+    slots: 20,
+    online: false,
+    place: 'Cyber club Kaspi',
+    description: 'Three hours of B-site retakes.',
+  ),
+  Tournament(
+    id: 's12',
+    title: 'Late Night Deathmatch',
+    category: Category.deathmatch,
+    startsAt: _at(12, 22),
+    slots: 24,
+    online: true,
+    place: 'https://discord.gg/kbtu-cs2',
+    description: 'Free for all, headshots only.',
+    players: const ['Nurlan'],
+  ),
+];
