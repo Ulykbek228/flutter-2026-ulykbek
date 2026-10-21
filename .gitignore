@@ -7,3 +7,4 @@ build/
 
 # Personal notes, not part of the submission
 notes/
+*.zip
