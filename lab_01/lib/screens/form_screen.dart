@@ -5,7 +5,6 @@ import '../models/tournament.dart';
 import '../routes.dart';
 import '../utils/format.dart';
 
-/// One screen for new and edit. Answers with the saved Tournament via pop.
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key, required this.args});
 
@@ -21,7 +20,6 @@ class _FormScreenState extends State<FormScreen> {
   bool get _isNew => widget.args.tournament == null;
   late final Tournament _initial = widget.args.tournament ?? Tournament.empty();
 
-  // Controllers and focus nodes: fields of State, created once, disposed.
   late final _title = TextEditingController(text: _initial.title);
   late final _place = TextEditingController(text: _initial.place);
   late final _slots = TextEditingController(
@@ -51,7 +49,6 @@ class _FormScreenState extends State<FormScreen> {
       : TimeOfDay.fromDateTime(_initial.startsAt);
   bool _saving = false;
 
-  /// What the form looked like when it opened.
   late final String _opened;
 
   @override
@@ -83,7 +80,6 @@ class _FormScreenState extends State<FormScreen> {
     super.dispose();
   }
 
-  /// Every value as one string: different from [_opened] means dirty.
   String _snapshot() => [
     _title.text,
     _place.text,
@@ -96,8 +92,6 @@ class _FormScreenState extends State<FormScreen> {
   ].join('|');
 
   bool get _dirty => _snapshot() != _opened;
-
-  // ---- validators: null = fine, a string = the message under the field ----
 
   String? _validateTitle(String? v) {
     final length = v?.trim().length ?? 0;
@@ -131,7 +125,7 @@ class _FormScreenState extends State<FormScreen> {
     final date = _date;
     final time = _time;
     if (time == null) return 'Pick a time';
-    if (date == null) return null; // the date field says it
+    if (date == null) return null;
     final at = _combine(date, time);
     if (_isNew && !at.isAfter(DateTime.now())) return 'Must be in the future';
     return null;
@@ -139,8 +133,6 @@ class _FormScreenState extends State<FormScreen> {
 
   DateTime _combine(DateTime d, TimeOfDay t) =>
       DateTime(d.year, d.month, d.day, t.hour, t.minute);
-
-  // ---- pickers: Cancel returns null and keeps the old value ----
 
   Future<void> _pickDate() async {
     final now = DateTime.now();
@@ -177,7 +169,7 @@ class _FormScreenState extends State<FormScreen> {
     if (date == null || time == null || category == null) return;
 
     setState(() => _saving = true);
-    await Future<void>.delayed(const Duration(seconds: 1)); // a fake save
+    await Future<void>.delayed(const Duration(seconds: 1));
     if (!mounted) return;
 
     final description = _description.text.trim();
@@ -186,7 +178,7 @@ class _FormScreenState extends State<FormScreen> {
       title: _title.text.trim(),
       category: category,
       startsAt: _combine(date, time),
-      slots: int.parse(_slots.text.trim()), // validated above
+      slots: int.parse(_slots.text.trim()),
       online: _online,
       place: _place.text.trim(),
       description: description.isEmpty ? null : description,
@@ -230,8 +222,7 @@ class _FormScreenState extends State<FormScreen> {
       body: Form(
         key: _formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        onChanged: () => setState(() {}), // re-check _dirty on every keystroke
-        // The form scrolls, so the keyboard never pushes Save off-screen.
+        onChanged: () => setState(() {}),
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
@@ -349,7 +340,6 @@ class _FormScreenState extends State<FormScreen> {
             ),
             const SizedBox(height: 24),
             FilledButton(
-              // null while saving: a double tap cannot save twice.
               onPressed: _saving ? null : _save,
               child: _saving
                   ? const SizedBox.square(

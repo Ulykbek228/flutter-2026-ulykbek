@@ -4,7 +4,6 @@ import '../models/tournament.dart';
 import '../utils/format.dart';
 import 'category_avatar.dart';
 
-/// The one reusable card: avatar | title, date, place | favourite.
 class TournamentCard extends StatelessWidget {
   const TournamentCard({
     super.key,
@@ -33,7 +32,6 @@ class TournamentCard extends StatelessWidget {
             children: [
               CategoryAvatar(tournament: t),
               const SizedBox(width: 20),
-              // Expanded: the 60-character title gets the rest and wraps.
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

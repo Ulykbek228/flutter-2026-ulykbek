@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../models/tournament.dart';
 
-/// Category icon with a "FULL" / "N left" badge in the corner.
 class CategoryAvatar extends StatelessWidget {
   const CategoryAvatar({super.key, required this.tournament});
 

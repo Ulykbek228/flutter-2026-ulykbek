@@ -4,7 +4,6 @@ import '../models/tournament.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/tournament_card.dart';
 
-/// Tab 2: only the starred tournaments.
 class FavouritesTab extends StatelessWidget {
   const FavouritesTab({
     super.key,

@@ -6,9 +6,7 @@ DateTime _at(int days, int hour) {
   return DateTime(now.year, now.month, now.day + days, hour);
 }
 
-/// Twelve tournaments with dates relative to today.
 List<Tournament> seedTournaments() => [
-  // Mandatory: 60-character title.
   Tournament(
     id: 's1',
     title: 'KBTU Autumn Cyber Cup 2026: Open Qualifier for All Faculties',
@@ -20,7 +18,6 @@ List<Tournament> seedTournaments() => [
     description: 'Best of three, map veto, top four go to the final.',
     players: const ['Aibek', 'Dana', 'Timur'],
   ),
-  // Mandatory: at its limit.
   Tournament(
     id: 's2',
     title: 'Friday Wingman Night',
@@ -33,7 +30,6 @@ List<Tournament> seedTournaments() => [
     favourite: true,
     players: const ['Arman', 'Zhanel', 'Sanzhar', 'Inkar'],
   ),
-  // Mandatory: in the past.
   Tournament(
     id: 's3',
     title: 'Dust II Classic',
@@ -45,7 +41,6 @@ List<Tournament> seedTournaments() => [
     description: 'The season opener.',
     players: const ['Aibek', 'Madina', 'Yerlan'],
   ),
-  // Mandatory: mode on (online, place is a link).
   Tournament(
     id: 's4',
     title: 'Online Aim Duels',
@@ -57,7 +52,6 @@ List<Tournament> seedTournaments() => [
     description: 'One-on-one on aim_map, first to sixteen.',
     players: const ['Dias', 'Kamila'],
   ),
-  // Mandatory: no description.
   Tournament(
     id: 's5',
     title: 'Retake Practice',

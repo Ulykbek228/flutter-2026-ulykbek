@@ -5,7 +5,6 @@ import '../models/tournament.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/tournament_card.dart';
 
-/// Tab 1: search, category chips, past filter, list or grid.
 class ListTab extends StatefulWidget {
   const ListTab({
     super.key,
@@ -24,7 +23,7 @@ class ListTab extends StatefulWidget {
 
 class _ListTabState extends State<ListTab> {
   final _search = TextEditingController();
-  Category? _category; // null = All
+  Category? _category;
   bool _showPast = false;
 
   @override
@@ -33,7 +32,6 @@ class _ListTabState extends State<ListTab> {
     super.dispose();
   }
 
-  /// A filtered copy, sorted: upcoming by date, past items last.
   List<Tournament> get _visible {
     final query = _search.text.trim().toLowerCase();
     final list = widget.tournaments
@@ -114,7 +112,6 @@ class _ListTabState extends State<ListTab> {
                   onAction: _clearSearch,
                 )
               : LayoutBuilder(
-                  // The space the tab really has, not the whole screen.
                   builder: (context, constraints) => constraints.maxWidth >= 600
                       ? _grid(visible)
                       : _list(visible),

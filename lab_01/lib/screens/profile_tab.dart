@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/profile.dart';
 import '../models/tournament.dart';
 
-/// Tab 3: nickname, group and the theme.
 class ProfileTab extends StatefulWidget {
   const ProfileTab({
     super.key,
@@ -34,7 +33,6 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   void didUpdateWidget(ProfileTab old) {
     super.didUpdateWidget(old);
-    // "Reset data" in the drawer clears the profile from above.
     if (old.profile.name != widget.profile.name) {
       _name.text = widget.profile.name;
     }

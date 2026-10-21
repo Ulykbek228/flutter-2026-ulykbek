@@ -1,8 +1,6 @@
-/// Where a tournament is in time. sealed: a switch must cover all three.
 sealed class Countdown {
   const Countdown();
 
-  /// A match night lasts about three hours.
   static const length = Duration(hours: 3);
 
   factory Countdown.of(DateTime startsAt, {DateTime? now}) {

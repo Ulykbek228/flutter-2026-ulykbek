@@ -8,7 +8,6 @@ import '../routes.dart';
 import '../utils/format.dart';
 import '../widgets/empty_state.dart';
 
-/// Pushed from a card. Gets the item and the shell's callbacks as arguments.
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key, required this.args});
 
@@ -27,7 +26,6 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    // Redraw once a minute so the countdown moves.
     _timer = Timer.periodic(const Duration(minutes: 1), (_) => setState(() {}));
   }
 
@@ -37,7 +35,6 @@ class _DetailScreenState extends State<DetailScreen> {
     super.dispose();
   }
 
-  /// Show the change here and send it up to the shell.
   void _apply(Tournament t) {
     setState(() => _t = t);
     widget.args.onChanged(t);
@@ -155,7 +152,6 @@ class _DetailScreenState extends State<DetailScreen> {
           child: joined
               ? OutlinedButton(onPressed: _leave, child: const Text('Leave'))
               : FilledButton(
-                  // Full or finished: the button cannot act, so it is null.
                   onPressed: _t.isFull || _t.isPast ? null : _join,
                   child: Text(_t.isFull ? 'Full' : 'Join'),
                 ),
@@ -222,7 +218,6 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 }
 
-/// Picture with the icon in the middle, category and countdown in corners.
 class _Header extends StatelessWidget {
   const _Header({required this.tournament, required this.countdown});
 

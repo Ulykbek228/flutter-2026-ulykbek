@@ -9,7 +9,6 @@ import 'screens/shell_screen.dart';
 
 void main() => runApp(const MyApp());
 
-/// Stateful because the theme mode lives here, above MaterialApp.
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -20,7 +19,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
-  // The only colour literal in lib/: the seed the whole palette grows from.
   static const _seed = Colors.deepOrange;
 
   @override
@@ -42,7 +40,6 @@ class _MyAppState extends State<MyApp> {
         onThemeModeChanged: (m) => setState(() => _themeMode = m),
       ),
     },
-    // Typed argument classes: the pattern checks the type, no `as` cast.
     onGenerateRoute: (settings) =>
         switch ((settings.name, settings.arguments)) {
           (Routes.detail, DetailArgs args) => MaterialPageRoute<void>(

@@ -1,6 +1,5 @@
 import 'category.dart';
 
-/// One CS2 tournament. Immutable: a change is a new Tournament via copyWith.
 class Tournament {
   const Tournament({
     required this.id,
@@ -13,11 +12,9 @@ class Tournament {
     this.description,
     this.favourite = false,
     List<String> players = const [],
-    // A named parameter cannot be private, so the field is set here.
     // ignore: prefer_initializing_formals
   }) : _players = players;
 
-  /// Defaults for the "new tournament" form.
   Tournament.empty()
     : id = '',
       title = '',
@@ -35,27 +32,22 @@ class Tournament {
   final Category category;
   final DateTime startsAt;
 
-  /// The limit the players list counts against.
   final int slots;
 
-  /// Mode: online means [place] is a link (Discord / FACEIT lobby).
   final bool online;
   final String place;
   final String? description;
   final bool favourite;
   final List<String> _players;
 
-  /// Read-only view: nobody outside can add to the list in place.
   List<String> get players => List.unmodifiable(_players);
 
-  // Derived values are getters, never fields.
   int get count => _players.length;
   int get free => slots - count < 0 ? 0 : slots - count;
   bool get isFull => count >= slots;
   bool get isPast => startsAt.isBefore(DateTime.now());
   bool contains(String name) => _players.contains(name);
 
-  /// Both numbers at once, as a record.
   ({int taken, int free}) get places => (taken: count, free: free);
 
   Tournament copyWith({

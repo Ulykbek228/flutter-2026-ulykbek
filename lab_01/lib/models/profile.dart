@@ -1,4 +1,3 @@
-/// The user of the app: who joins tournaments.
 class Profile {
   const Profile({required this.name, required this.group});
 

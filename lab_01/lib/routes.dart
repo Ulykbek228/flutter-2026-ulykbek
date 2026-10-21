@@ -9,7 +9,6 @@ abstract final class Routes {
   static const form = '/tournament/form';
 }
 
-/// Everything the detail screen needs: the item and the shell's callbacks.
 class DetailArgs {
   const DetailArgs({
     required this.tournament,
@@ -26,7 +25,6 @@ class DetailArgs {
   final VoidCallback onOpenProfile;
 }
 
-/// null = a new tournament, otherwise the one to edit.
 class FormArgs {
   const FormArgs({this.tournament});
   final Tournament? tournament;

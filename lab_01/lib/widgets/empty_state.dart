@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// One widget for every "nothing here" case: icon, message, optional button.
 class EmptyState extends StatelessWidget {
   const EmptyState({
     super.key,

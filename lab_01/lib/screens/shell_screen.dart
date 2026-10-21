@@ -9,8 +9,6 @@ import 'favourites_tab.dart';
 import 'list_tab.dart';
 import 'profile_tab.dart';
 
-/// Owns the data: the tournaments and the profile live here.
-/// Tabs get them through constructors and send changes up as callbacks.
 class ShellScreen extends StatefulWidget {
   const ShellScreen({
     super.key,
@@ -30,7 +28,6 @@ class _ShellScreenState extends State<ShellScreen> {
   Profile _profile = const Profile.empty();
   int _tab = 0;
 
-  // The route caches this screen, so it mirrors the mode it shows in Profile.
   late ThemeMode _themeMode = widget.themeMode;
 
   static const _titles = ['Tournaments', 'Favourites', 'Profile'];
@@ -78,7 +75,7 @@ class _ShellScreenState extends State<ShellScreen> {
   }
 
   void _about() {
-    Navigator.of(context).pop(); // close the drawer
+    Navigator.of(context).pop();
     showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
@@ -98,7 +95,7 @@ class _ShellScreenState extends State<ShellScreen> {
   }
 
   Future<void> _reset() async {
-    Navigator.of(context).pop(); // close the drawer
+    Navigator.of(context).pop();
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -153,7 +150,6 @@ class _ShellScreenState extends State<ShellScreen> {
         ],
       ),
     ),
-    // IndexedStack keeps every tab alive: search text and scroll survive.
     body: IndexedStack(
       index: _tab,
       children: [
