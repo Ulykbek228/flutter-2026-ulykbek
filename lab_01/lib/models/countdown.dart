@@ -7,7 +7,9 @@ sealed class Countdown {
 
   factory Countdown.of(DateTime startsAt, {DateTime? now}) {
     final current = now ?? DateTime.now();
-    if (current.isBefore(startsAt)) return Upcoming(startsAt.difference(current));
+    if (current.isBefore(startsAt)) {
+      return Upcoming(startsAt.difference(current));
+    }
     final since = current.difference(startsAt);
     return since < length ? Started(since) : const Ended();
   }

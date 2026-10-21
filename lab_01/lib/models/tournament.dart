@@ -13,6 +13,8 @@ class Tournament {
     this.description,
     this.favourite = false,
     List<String> players = const [],
+    // A named parameter cannot be private, so the field is set here.
+    // ignore: prefer_initializing_formals
   }) : _players = players;
 
   /// Defaults for the "new tournament" form.
