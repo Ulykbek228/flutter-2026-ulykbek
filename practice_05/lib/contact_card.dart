@@ -15,15 +15,12 @@ class ContactCard extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12),
-        // Without Expanded around the Column (Pixel 7, 412 dp wide):
-        // "A RenderFlex overflowed by 584 pixels on the right."
+
         child: Row(
           children: [
             Stack(
-              // The badge may hang over the avatar's edge.
               clipBehavior: Clip.none,
               children: [
-                // List order decides depth: avatar first = badge on top.
                 CircleAvatar(child: Text(contact.initial)),
                 if (contact.unread > 0)
                   Positioned(
@@ -47,8 +44,7 @@ class ContactCard extends StatelessWidget {
               ],
             ),
             const SizedBox(width: 12),
-            // Expanded gets the leftover width, tight — so the long name
-            // wraps instead of overflowing.
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
